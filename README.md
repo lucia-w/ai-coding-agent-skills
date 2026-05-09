@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Coding Agent Playbook
 
-## Getting Started
+Practical skills for using coding agents reliably in real software projects.
 
-First, run the development server:
+A collection of structured workflows for Claude Code, Cursor, Copilot, and other AI coding agents — covering repo setup, safe shell access, GitHub integration, MCP, code review, and CI guardrails.
+---
+
+## Skills
+
+| Skill | Command | Category |
+|-------|---------|----------|
+| [Set up AGENTS.md](skills/agents-md.md) | `/agents-md` | Repo Setup |
+| [Safe shell access](skills/safe-shell.md) | `/safe-shell` | Safety |
+| [Connect to GitHub](skills/github-connect.md) | `/github-connect` | Tooling |
+| [Secure MCP setup](skills/mcp-secure.md) | `/mcp-secure` | Safety |
+| [Write agent-ready tickets](skills/agent-ticket.md) | `/agent-ticket` | Team Adoption |
+| [Bug fix workflow](skills/agent-bugfix.md) | `/agent-bugfix` | Workflows |
+| [Code review workflow](skills/agent-review.md) | `/agent-review` | Workflows |
+| [CI as guardrail](skills/ci-guardrail.md) | `/ci-guardrail` | Quality |
+
+---
+
+## How to install
+
+### Claude Code
+
+Copy skills into your project's `.claude/commands/` directory:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+mkdir -p .claude/commands
+cp skills/*.md .claude/commands/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Each file becomes a slash command. For example, `skills/agents-md.md` becomes `/agents-md` in Claude Code.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Cursor / Windsurf / other agents
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy the skill content into your agent's custom instructions or rules files. The workflow steps work regardless of platform — the slash command format is optional.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Using a skill
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+In Claude Code, type the command name:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+/agents-md
+```
 
-## Deploy on Vercel
+The agent will follow the skill's workflow, check each step, and confirm exit criteria before finishing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Philosophy
+
+- **Operational, not theoretical** — every step is something you can do right now
+- **Date-aware** — tooling moves fast; skills note what they assume about the environment
+- **Opinionated** — these are defaults that work, not every possible option
+- **Short and replaceable** — each skill is a single file you can fork and adapt
+
+---
+
