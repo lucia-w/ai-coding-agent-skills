@@ -1,22 +1,69 @@
-# AI Coding Agent Playbook
+# AI Coding Agent Skills
 
-Practical skills for using coding agents reliably in real software projects.
+Practical slash-command skills for using coding agents reliably in real software projects.
 
-A collection of structured workflows for Claude Code, Cursor, Copilot, and other AI coding agents — covering repo setup, safe shell access, GitHub integration, MCP, code review, and CI guardrails.
+A collection of 22 structured workflows for Claude Code, Cursor, Copilot, and other AI coding agents — covering everything from repo setup and ticket writing to debugging, testing, migrations, releases, and incident response.
+
 ---
 
 ## Skills
 
-| Skill | Command | Category |
-|-------|---------|----------|
-| [Set up AGENTS.md](skills/agents-md.md) | `/agents-md` | Repo Setup |
-| [Safe shell access](skills/safe-shell.md) | `/safe-shell` | Safety |
-| [Connect to GitHub](skills/github-connect.md) | `/github-connect` | Tooling |
-| [Secure MCP setup](skills/mcp-secure.md) | `/mcp-secure` | Safety |
-| [Write agent-ready tickets](skills/agent-ticket.md) | `/agent-ticket` | Team Adoption |
-| [Bug fix workflow](skills/agent-bugfix.md) | `/agent-bugfix` | Workflows |
-| [Code review workflow](skills/agent-review.md) | `/agent-review` | Workflows |
-| [CI as guardrail](skills/ci-guardrail.md) | `/ci-guardrail` | Quality |
+### Repo Setup
+
+| Skill | Command |
+|-------|---------|
+| [Set up AGENTS.md](.claude/commands/agents-md.md) | `/agents-md` |
+| [Safe shell access](.claude/commands/safe-shell.md) | `/safe-shell` |
+| [Connect to GitHub](.claude/commands/github-connect.md) | `/github-connect` |
+| [Secure MCP setup](.claude/commands/mcp-secure.md) | `/mcp-secure` |
+
+### Planning
+
+| Skill | Command |
+|-------|---------|
+| [Write agent-ready tickets](.claude/commands/agent-ticket.md) | `/agent-ticket` |
+
+### Development
+
+| Skill | Command |
+|-------|---------|
+| [Build a new feature](.claude/commands/agent-feature.md) | `/agent-feature` |
+| [Investigate unknown problems](.claude/commands/agent-debug.md) | `/agent-debug` |
+| [Bug fix workflow](.claude/commands/agent-bugfix.md) | `/agent-bugfix` |
+| [Safe refactoring](.claude/commands/agent-refactor.md) | `/agent-refactor` |
+
+### Testing
+
+| Skill | Command |
+|-------|---------|
+| [Test-driven development](.claude/commands/agent-tdd.md) | `/agent-tdd` |
+| [Generate tests for existing code](.claude/commands/agent-test-gen.md) | `/agent-test-gen` |
+
+### Review & Quality
+
+| Skill | Command |
+|-------|---------|
+| [Clean up and open a PR](.claude/commands/agent-pr.md) | `/agent-pr` |
+| [Code review](.claude/commands/agent-review.md) | `/agent-review` |
+| [Security review](.claude/commands/agent-security-review.md) | `/agent-security-review` |
+| [Verify frontend changes](.claude/commands/agent-ui-check.md) | `/agent-ui-check` |
+
+### Maintenance
+
+| Skill | Command |
+|-------|---------|
+| [Investigate and fix performance](.claude/commands/agent-performance.md) | `/agent-performance` |
+| [Database and API migrations](.claude/commands/agent-migration.md) | `/agent-migration` |
+| [Upgrade dependencies safely](.claude/commands/agent-dependency-upgrade.md) | `/agent-dependency-upgrade` |
+| [Update docs after code changes](.claude/commands/agent-docs.md) | `/agent-docs` |
+| [Prepare a release](.claude/commands/agent-release.md) | `/agent-release` |
+| [Production incident response](.claude/commands/agent-incident.md) | `/agent-incident` |
+
+### CI
+
+| Skill | Command |
+|-------|---------|
+| [CI as guardrail](.claude/commands/ci-guardrail.md) | `/ci-guardrail` |
 
 ---
 
@@ -24,18 +71,18 @@ A collection of structured workflows for Claude Code, Cursor, Copilot, and other
 
 ### Claude Code
 
-Copy skills into your project's `.claude/commands/` directory:
+From this repository, copy the commands into another project's `.claude/commands/` directory:
 
 ```bash
 mkdir -p .claude/commands
-cp skills/*.md .claude/commands/
+cp .claude/commands/*.md /path/to/your-project/.claude/commands/
 ```
 
-Each file becomes a slash command. For example, `skills/agents-md.md` becomes `/agents-md` in Claude Code.
+Each file becomes a slash command. For example, `agent-bugfix.md` becomes `/agent-bugfix` in Claude Code.
 
 ### Cursor / Windsurf / other agents
 
-Copy the skill content into your agent's custom instructions or rules files. The workflow steps work regardless of platform — the slash command format is optional.
+Copy the skill content into your agent's custom instructions or rules files. The workflow steps work regardless of platform — the slash command format is Claude Code specific.
 
 ---
 
@@ -44,7 +91,7 @@ Copy the skill content into your agent's custom instructions or rules files. The
 In Claude Code, type the command name:
 
 ```
-/agents-md
+/agent-bugfix
 ```
 
 The agent will follow the skill's workflow, check each step, and confirm exit criteria before finishing.
@@ -54,9 +101,6 @@ The agent will follow the skill's workflow, check each step, and confirm exit cr
 ## Philosophy
 
 - **Operational, not theoretical** — every step is something you can do right now
-- **Date-aware** — tooling moves fast; skills note what they assume about the environment
 - **Opinionated** — these are defaults that work, not every possible option
 - **Short and replaceable** — each skill is a single file you can fork and adapt
-
----
-
+- **Exit criteria first** — every skill has a verifiable checklist so you know when you're done
